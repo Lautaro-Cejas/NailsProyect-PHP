@@ -14,7 +14,7 @@ session_start();
     <link rel="shortcut icon" href="img/mochi-logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="scss/custom.css">
-    <title>Inicio</title>
+    <title>Iniciardo</title>
 </head>
 
 <body class="fondo">

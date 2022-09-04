@@ -44,8 +44,8 @@ if (isset($_SESSION['admin'])) {
                                 </li>
                             <?php } else if (!isset($_SESSION["id"])) { ?>
                                 <li class="nav-item mx-auto">
-                                    <a href="templates/login.php"><button class="btn btn-outline-success">Ingresar</button></a>
-                                    <a href="templates/registro.php"><button class="btn btn-outline-primary">Registrarme</button></a>
+                                    <a href="login.php"><button class="btn btn-outline-success">Ingresar</button></a>
+                                    <a href="registro.php"><button class="btn btn-outline-primary">Registrarme</button></a>
                                 </li>
                             <?php } ?>
                             <li class="nav-item">

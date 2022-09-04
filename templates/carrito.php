@@ -9,7 +9,7 @@ if (isset($_SESSION['admin'])) {
 }
 
 $objcx = new Conexion();
-$sql = "SELECT  `producto`.`id-producto`,`producto`.`producto` AS `nombre`, `producto`.`precio` AS `precio`, `producto`.`categoria` AS `categoria`, `turno`.`dia` AS `dia`, `turno`.`horario` AS `hora` FROM `producto`, `turno` INNER JOIN `carrito` ON `carrito`.`id-producto` = `id-producto`";
+$sql = "SELECT `producto`.`id-producto`,`producto`.`producto` AS `nombre`, `producto`.`precio` AS `precio`, `producto`.`categoria` AS `categoria`, `turno`.`dia` AS `dia`, `turno`.`horario` AS `hora` FROM `producto`, `turno` INNER JOIN `carrito` ON `carrito`.`id-producto` = `id-producto`";
 $compras = $objcx->consultar($sql);
 
 ?>
@@ -80,7 +80,7 @@ $compras = $objcx->consultar($sql);
             <h1 class="mochi display-1 mt-1 mb-0">Carrito</h1>
             <div class="row bg-light rounded-5 p-3 m-auto vh-100">
                 <div class="col-6 col-md-8 m-auto">
-                    <?php if (!isset($_SESSION["id"]) || isset($compras)) { ?>
+                    <?php if (!isset($_SESSION["id"]) || count($compras) == 0) { ?>
                         <h1 class="text-center">No hay productos en el carrito</h1>
                         <?php } else {
                         foreach ($compras as $compra) { ?>
@@ -106,6 +106,7 @@ $compras = $objcx->consultar($sql);
                     <?php } ?>
                 </div>
                 <div class="col-md-4 col-6 text-bg-dark m-0 py-2 rounded-5">
+                    <h1>Productos: <?php echo count(($compras))?></h1>
                     <?php foreach ($compras as $compra) { ?>
                         <div class="col-auto">
                             <p><?php $compra["nombre"] ?></p>
@@ -127,7 +128,7 @@ $compras = $objcx->consultar($sql);
             </div>
 
             <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-                <li class="ms-3"><a class="text-muted" href="img\qr.png"><img src="../img/wpp.png" alt="wppFooter" width="30"></a></li>
+                <li class="ms-3"><a class="text-muted" href="..img/qr.png"><img src="../img/wpp.png" alt="wppFooter" width="30"></a></li>
                 <li class="ms-3"><a class="text-muted" href="https://www.instagram.com/mochi.munay/"><img src="../img/ig.png" alt="igFooter" width="35"></a></li>
                 <li class="mx-3"><a class="text-muted" href="https://www.facebook.com/mic.yevara"><img src="../img/fb.png" alt="fbFooter" width="30"></a></li>
             </ul>

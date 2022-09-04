@@ -111,7 +111,7 @@ session_start();
             </div>
 
             <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-                <li class="ms-3"><a class="text-muted" href="img\qr.png"><img src="img/wpp.png" alt="wppFooter" width="30"></a></li>
+                <li class="ms-3"><a class="text-muted" href="img/qr.png"><img src="img/wpp.png" alt="wppFooter" width="30"></a></li>
                 <li class="ms-3"><a class="text-muted" href="https://www.instagram.com/mochi.munay/"><img src="img/ig.png" alt="igFooter" width="35"></a></li>
                 <li class="mx-3"><a class="text-muted" href="https://www.facebook.com/mic.yevara"><img src="img/fb.png" alt="fbFooter" width="30"></a></li>
             </ul>

@@ -21,28 +21,27 @@ if ($_SESSION) {
 }
 $estaEnCarrito = $objcx->consultar("SELECT * FROM `carrito` WHERE `id-sesion` = '$id_sesion' AND `id-usuario` = '$id_usuario'");
 
-if (isset($_SESSION["id"])) {
-    if ($_GET) {
-        if (isset($_GET["agregar"])) {
-            $id_producto = $_GET["agregar"];
-            $estado = "En proceso";
-            $id_sesion = $_SESSION["sesion"];
-            $cx = new Conexion();
-            $disponibles = $cx->consultar("SELECT `stock` FROM `producto` WHERE `id-producto` = '$id_producto'");
-            foreach ($dispobibles as $disponible) {
-                if ($disponible >= 1) {
-                    $cx->ejecutar("INSERT INTO `carrito` (`id-sesion`,`id-producto`,`id-usuario`,`id-turno`,`estado`) VALUES ('$id_sesion', '$id_producto', '$id_usuario',NULL, '$estado')");
-                }
+if ($_GET) {
+    if (isset($_GET["agregar"])) {
+        $id_producto = $_GET["agregar"];
+        $estado = "En proceso";
+        $id_sesion = $_SESSION["sesion"];
+        $cx = new Conexion();
+        $disponibles = $cx->consultar("SELECT `stock` FROM `producto` WHERE `id-producto` = '$id_producto'");
+        foreach ($dispobibles as $disponible) {
+            if ($disponible >= 1) {
+                $cx->ejecutar("INSERT INTO `carrito` (`id-sesion`,`id-producto`,`id-usuario`,`id-turno`,`estado`) VALUES ('$id_sesion', '$id_producto', '$id_usuario',NULL, '$estado')");
             }
-            header("location:productos.php");
         }
-        if (isset($_GET["cancelar"])) {
-            $id_producto = $_GET["cancelar"];
-            $cx = new Conexion();
-            $cx->ejecutar("DROP WHERE `id-producto` = '$id_producto' AND `id-usuario` = '$id_usuario'");
-        }
+        header("location:productos.php");
+    }
+    if (isset($_GET["cancelar"])) {
+        $id_producto = $_GET["cancelar"];
+        $cx = new Conexion();
+        $cx->ejecutar("DROP WHERE `id-producto` = '$id_producto' AND `id-usuario` = '$id_usuario'");
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -130,11 +129,11 @@ if (isset($_SESSION["id"])) {
                         </ul>
                         <div class="card-body mx-auto">
                             <?php if (isset($_SESSION["sesion"])) { ?>
-                                <?php if (isset($_GET)) { ?>
-                                    <a href="?agregar=<?php echo $producto["id-producto"] ?>" class="card-link"><button class="btn btn-success btn-lg">Agregar al carrito</button></a>
+                                <?php if (count($estaEnCarrito) == 0) { ?>
+                                    <a href="?agregar=<?php $producto["id-producto"] ?>" class="card-link"><button class="btn btn-success btn-lg">Agregar al carrito</button></a>
                                 <?php } else { ?>
                                     <button class="btn btn-primary disabled">En el carrito</button>
-                                    <a href="?cancelar=<?php echo $producto["id-producto"] ?>" class="card-link">
+                                    <a href="?cancelar=<?php $producto["id-producto"] ?>" class="card-link">
                                         <button class="btn btn-danger">Cancelar</button>
                                     </a>
                                 <?php } ?>

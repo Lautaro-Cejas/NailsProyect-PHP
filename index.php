@@ -14,7 +14,7 @@ session_start();
     <link rel="shortcut icon" href="img/mochi-logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="scss/custom.css">
-    <title>Iniciardo</title>
+    <title>Inicio</title>
 </head>
 
 <body class="fondo">
@@ -67,9 +67,9 @@ session_start();
         </nav>
     </header>
 
-    <main>
-        <header class="m-5">
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <main class="container">
+        <header class="row m-5">
+            <div id="carouselExampleControls" class="carousel slide mt-5" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="img/banner-1.png" class="d-block w-100 img-fluid rounded-5" alt="carousel1">
@@ -94,7 +94,7 @@ session_start();
                     <h1 class="display-5 fw-bold mochi">Mochi Munay</h1>
                     <p class="col-sm-8 fs-4">Te ofrecemos el mejor servicio para decorar y cuidar tus uñas con las mejores estilistas. No pierdas tu tiempo y veni a quedar como una bichota!</p>
                     <a href="templates/productos.php">
-                        <button class="btn btn-info btn-lg" type="button">Empezar a reservar</button>
+                        <button class="btn btn-warning btn-lg" type="button">Empezar a reservar</button>
                     </a>
                 </div>
             </div>
